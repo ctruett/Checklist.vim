@@ -22,7 +22,7 @@ exe 'g!//s/- /+ /g'
 syn match checkBox /^   / skipwhite
 syn match checkedBox /^  × .*/ skipwhite
 syn match plus /^+ / skipwhite
-syn match minus /^+ / skipwhite
+syn match minus /^- / skipwhite
 
 hi link checkBox Type
 hi link checkedBox Comment
