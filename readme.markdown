@@ -7,9 +7,15 @@ Add the following lines to your .vimrc:
     au BufNewFile,BufRead *.chklst setf chklst
 
 #### Usage
+<<<<<<< HEAD
     To create a checklist, use <leader>v.
     To mark items as done use <leader>vv in normal mode.
     To fold list items use <leader>vv on a parent (+) item in normal mode.
+=======
+To create a checklist, use <leader>v.
+To mark items as done use <leader>vv in normal mode.
+To fold list items use <leader>vv on a parent (+) item in normal mode.
+>>>>>>> 03d9ebec02bf4be0e58d6ae648a91aea3549961e
 
 #### Notes
 To dis­able timestamps:
