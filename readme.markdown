@@ -15,7 +15,7 @@ Add the following lines to your .vimrc:
 
 #### Notes
 
-To dis­able timestamps:
+To dis­able timestamps, add this to your .vimrc:
 
     :let g:checklist_use_timestamps = 0
 
