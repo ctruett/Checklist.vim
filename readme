@@ -1,4 +1,5 @@
 #### Installation
+
 Extract checklist.zip to your .vim folder, or manually put chklst.vim into /syntax and checklist.vim into /plugin.
 
 Add the following lines to your .vimrc:
@@ -7,11 +8,13 @@ Add the following lines to your .vimrc:
     au BufNewFile,BufRead *.chklst setf chklst
 
 #### Usage
+
     To create a checklist, use <leader>v.
     To mark items as done use <leader>vv in normal mode.
     To fold list items use <leader>vv on a parent (+) item in normal mode.
 
 #### Notes
+
 To dis­able timestamps:
 
     :let g:checklist_use_timestamps = 0
@@ -24,4 +27,5 @@ To dis­able timestamps:
     Thu 05/19/2011 — Made timestamps optional, general code cleanup.
 
 #### Feedback
+
 If you have benefited from this plugin in any way, please leave me a comment!
