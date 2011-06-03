@@ -1,15 +1,15 @@
-" Title: checklist.vim - v0.5
+" Title: checklist.vim - v0.6
 " Summary: Vim script for creating a checklist.
-" Last Modified: 01.06.2011 at 05:10 AM
+" Last Modified: Sat 05/28/2011 05:51 AM
 " Maintainer: Chris Truett <http://www.theywillknow.us>
 " Description: Checklist.vim is a super-simple way to create todo lists.
 
 " Only load plugin once
 if exists("manage_checklist")
-  finish
+  "finish
 endif
 
-let manage_checklist = 1
+"let manage_checklist = 1
 let g:checklist_use_timestamps = 1
 
 function! MakeItem ()
@@ -31,14 +31,14 @@ function! MakeItem ()
     exe 'normal ddo+ '
     return ''
   elseif match(l:line, '\V+ ') >= 0
-    exe 'normal i '
+    exe 'normal i* '
     exe 'normal v>'
     return ''
-  elseif match(l:line, '\V ') >= 0
-    exe 'normal i '
+  elseif match(l:line, '\V* ') >= 0
+    exe 'normal i* '
     return ''
   elseif match(l:line, '\V× ') >= 0
-    exe 'normal i '
+    exe 'normal i* '
     return ''
   else
     return ''
@@ -51,9 +51,9 @@ function! ToggleItem ()
   let l:line = getline(line(".") - 1)
 
   " Toggle checkboxes and timestamps
-  if match(current_line,'\V ') >= 0
+  if match(current_line,'\V* ') >= 0
     echo "Item checked."
-    exe 's/\V /× /'
+    exe 's/\V* /× /'
     let time = strftime("%d.%m.%Y at %I:%M %p")
     if g:checklist_use_timestamps == 1
       exe "normal a ".time." :"
@@ -62,9 +62,9 @@ function! ToggleItem ()
   elseif match(current_line,'\V× ') >= 0
     echo "Item unchecked."
     if g:checklist_use_timestamps == 1
-      exe 's/\× \d\{2}\.\d\{2}\.\d\{4} at \d\{2}:\d\{2} [A|P]M ://i'
+      exe 's/\× \d\{2}\.\d\{2}\.\d\{4} at \d\{2}:\d\{2} [A|P]M :/*/i'
     elseif g:checklist_use_timestamps == 0
-      exe 's/\V× / /i'
+      exe 's/\V× /* /i'
     endif
     return ""
   endif
