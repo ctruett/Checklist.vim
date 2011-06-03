@@ -59,7 +59,7 @@ function! ToggleItem ()
   if match(current_line,'\V* ') >= 0
     echo "Item checked."
     exe 's/\V* /× /'
-    let time = strftime("%d.%m.%Y at %I:%M %p")
+    let time = strftime("%m.%d.%Y at %I:%M %p")
     if g:checklist_use_timestamps == 1
       exe "normal a ".time." :"
     endif
