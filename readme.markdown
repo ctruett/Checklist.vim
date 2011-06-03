@@ -20,6 +20,7 @@ To dis­able timestamps, add this to your .vimrc:
     :let g:checklist_use_timestamps = 0
 
 #### Updates
+    03.06.2011 - Changed the ascii box &lt;81&gt; to an asterick. (Didn't really want to though!)
     01.06.2011 - Added datestamp support. 
     05.28.2011 — Major Rehaul. Much faster. Added syntax file and packaged into .zip.
     05.24.2011 — Rewrote entire plugin. Should be faster and easier.
