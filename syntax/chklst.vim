@@ -1,7 +1,8 @@
 " Vim syntax file
 " Language: Checklist
 " Maintainer: Christopher Truett
-" Latest Revision: 05/24/2011 
+" Latest Revision: 06.04.2011
+" Special Thanks: karategeek6 from stackover flow for the fold expression.
 
 if !exists("main_syntax")
   if version < 600
@@ -12,11 +13,22 @@ if !exists("main_syntax")
   let main_syntax = 'chklst'
 endif
 
-" Keep these disabled for now
-setlocal foldmethod=indent
+setlocal foldlevel=0
+setlocal foldmethod=expr
+setlocal foldexpr=FoldLevel(v:lnum)
+
+function! FoldLevel(linenum)
+  let linetext = getline(a:linenum)
+  let level = indent(a:linenum) / 4
+  if linetext =~ '^\s*[\*|×]'
+    let level = 20
+  endif
+  return level
+endfunction
+
 
 exe 'normal zR'
-exe 'g!//s/- /+ /g'
+exe 'g!/[^*].*/s/- /+ /g'
 
 " Matches
 syn match checkBox /^\s*\* / skipwhite
