@@ -22,6 +22,8 @@ To create a checklist, use `<leader>v`.
 To mark items as done use `<leader>vv` in normal mode.  
 To fold list items use `<leader>vv` on a parent (+) item in normal mode.
 
+Basic use is `<leader>v` 'Name of checklist' `<CR>`, `<leader>v` for subsequent list items, `<CR>`, etc.
+
 #### CHANGE LOG
     06.03.2011 - Changed the ascii box <81> to an asterick. (Didn't really want to though!)  
     06.01.2011 - Added datestamp support. 
