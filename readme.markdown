@@ -23,7 +23,7 @@ To mark items as done use `<leader>vv` in normal mode.
 To fold list items use `<leader>vv` on a parent (+) item in normal mode.
 
 #### CHANGE LOG
-    06.03.2011 - Changed the ascii box `<81>` to an asterick. (Didn't really want to though!)  
+    06.03.2011 - Changed the ascii box <81> to an asterick. (Didn't really want to though!)  
     06.01.2011 - Added datestamp support. 
     05.28.2011 - Major Rehaul. Much faster. Added syntax file and packaged into .zip.  
     05.24.2011 - Rewrote entire plugin. Should be faster and easier.  
