@@ -18,8 +18,8 @@ When starting to make a checklist, make sure to first set the filetype using:
 
     :set ft=chklst
 
-To create a checklist, use `<leader>v`.
-To mark items as done use `<leader>vv` in normal mode.
+To create a checklist, use `<leader>v`.  
+To mark items as done use `<leader>vv` in normal mode.  
 To fold list items use `<leader>vv` on a parent (+) item in normal mode.
 
 #### CHANGE_LOG
