@@ -1,12 +1,12 @@
-" Title: checklist.vim - v0.6
+" Title: checklist.vim - v0.65
 " Summary: Vim script for creating a checklist.
-" Last Modified: Sat 05/28/2011 05:51 AM
+" Last Modified: 06.04.2011 07:11 AM
 " Maintainer: Chris Truett <http://www.theywillknow.us>
 " Description: Checklist.vim is a super-simple way to create todo lists.
 
 " Only load plugin once
 if exists("manage_checklist")
-  "finish
+  finish
 endif
 
 if g:checklist_use_timestamps == 0
@@ -15,7 +15,7 @@ else
   let g:checklist_use_timestamps = 1
 endif
 
-"let manage_checklist = 1
+let manage_checklist = 1
 
 function! MakeItem ()
   " Define variables
@@ -55,6 +55,15 @@ function! ToggleItem ()
   let current_line = getline('.')
   let l:line = getline(line(".") - 1)
 
+  function! CheckNextLine ()
+    let l:line = getline(line(".") + 2)
+    if match(l:line, '^\s*$') >= 0
+      return "Empty"
+    else
+      return "Not Empty"
+    endif
+  endfunction
+
   " Toggle checkboxes and timestamps
   if match(current_line,'\V* ') >= 0
     echo "Item checked."
@@ -78,12 +87,18 @@ function! ToggleItem ()
   if match(current_line,'^+ ') >= 0
     exe 'normal jzc'
     exe 'normal k'
-    exe 's/\V+ /- /i'
+    if CheckNextLine() == 'Empty'
+    else
+      exe 's/\V+ /- /i'
+    endif
     return ""
   elseif match(current_line,'^- ') >= 0
     exe 'normal jzo'
     exe 'normal k'
-    exe 's/\V- /+ /i'
+    if CheckNextLine() == 'Empty'
+    else
+      exe 's/\V- /+ /i'
+    endif
     return ""
   endif
 endfunction
