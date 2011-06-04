@@ -1,10 +1,3 @@
-*checklist.txt*	For Vim version 7.0 
-
-Script:   checklist.vim
-Authors:  Chris Truett <mailto:chris@theywillknow.us>
-License:  Same terms as Vim itself (see |license|)
-
-============================================================================
 #### INSTALL
 Download latest checklist.vx.x.zip, extract it in your .vim directory:
 
