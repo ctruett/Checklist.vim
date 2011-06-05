@@ -21,7 +21,7 @@ function! FoldLevel(linenum)
   let linetext = getline(a:linenum)
   let level = indent(a:linenum) / 4
   if linetext =~ '^\s*[\*|×]'
-    let level = 20
+    let level = 1
   endif
   return level
 endfunction
