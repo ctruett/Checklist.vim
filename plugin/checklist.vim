@@ -23,7 +23,7 @@ function! CheckLine(line, direction, offset)
   elseif a:direction == '-'
     let l:line = getline(line(a:line) - a:offset)
   endif
-  if match(l:line, '^\s*$') >= 0
+  if l:line =~ '^\s*$'
     return "Empty"
   else
     return "Not Empty"
@@ -40,14 +40,14 @@ function! MakeItem ()
       exe 'normal ddo+ '
     endif
     return ''
-  elseif match(l:line, '\V+ ') >= 0
+  elseif l:line =~ '\V+ '
     exe "normal i* "
     normal v>
     return ''
-  elseif match(l:line, '\V* ') >= 0
+  elseif l:line =~ '\V* '
     exe "normal i* "
     return ''
-  elseif match(l:line, '\V× ') >= 0
+  elseif l:line =~ '\V× '
     normal i* 
     return ''
   else
@@ -59,7 +59,7 @@ function! ToggleItem ()
   let current_line = getline('.')
   let l:line = getline(line(".") - 1)
 
-  if match(current_line,'\V* ') >= 0
+  if current_line =~ '\V* '
     echo "Item checked."
     exe 's/\V* /× /'
     let time = strftime("%m.%d.%Y at %I:%M %p")
@@ -67,7 +67,7 @@ function! ToggleItem ()
       exe "normal a ".time." :"
     endif
     return ""
-  elseif match(current_line,'\V× ') >= 0
+  elseif current_line =~ '\V× '
     echo "Item unchecked."
     if g:checklist_use_timestamps == 1
       exe 's/\× \d\{2}\.\d\{2}\.\d\{4} at \d\{2}:\d\{2} [A|P]M :/*/i'
@@ -77,7 +77,7 @@ function! ToggleItem ()
     return ""
   endif
 
-  if match(current_line,'^+ ') >= 0
+  if current_line =~ '^+ '
     if CheckLine('.','+',1) == 'Empty'
     elseif CheckLine('.','+',2) == 'Empty'
     else
@@ -86,7 +86,7 @@ function! ToggleItem ()
       normal k
     endif
     return ""
-  elseif match(current_line,'^- ') >= 0
+  elseif current_line =~ '^- '
     if CheckLine('.','+',1) == 'Empty'
     elseif CheckLine('.','+',2) == 'Empty'
     else
