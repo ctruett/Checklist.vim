@@ -9,88 +9,82 @@ if exists("manage_checklist")
   finish
 endif
 "---------------------------------------------------------------------"
+let manage_checklist = 1
+"---------------------------------------------------------------------"
 if g:checklist_use_timestamps == 0
   let g:checklist_use_timestamps = 0
 else
   let g:checklist_use_timestamps = 1
 endif
 "---------------------------------------------------------------------"
-let manage_checklist = 1
-"---------------------------------------------------------------------"
 function! CheckLine(line, direction, offset)
-  if a:direction == '+'
+  if a:direction == 'down'
     let l:line = getline(line(a:line) + a:offset)
-  elseif a:direction == '-'
+  elseif a:direction == 'up'
     let l:line = getline(line(a:line) - a:offset)
   endif
-  if l:line =~ '^\s*$'
-    return "Empty"
-  else
-    return "Not Empty"
-  endif
+  return l:line
 endfunction
 "---------------------------------------------------------------------"
 function! MakeItem ()
-  let l:line = getline(line(".") - 1)
+  let pline = getline(line('.') - 1) 
 
-  if CheckLine('.','-',1) == 'Empty'
-    if line('.') == 1
-      exe 'normal I+ '
-    else
-      exe 'normal ddo+ '
-    endif
-    return ''
-  elseif l:line =~ '\V+ '
-    exe "normal i* "
-    normal v>
-    return ''
-  elseif l:line =~ '\V* '
-    exe "normal i* "
-    return ''
-  elseif l:line =~ '\V× '
-    normal i* 
-    return ''
-  else
-    return ''
+  if line('.') == 1
+    exe 'normal I+ '
   endif
+
+  if pline =~ '^\s*$'
+    exe 'normal a+ '
+  endif
+
+  if pline =~ '^+ '
+    exe 'normal i  * '
+  endif
+
+  if pline =~ '^  \* '
+    exe 'normal i* '
+  endif
+
+  if pline =~ '^  × '
+    exe 'normal i* '
+  endif
+
+  return ''
 endfunction
 "---------------------------------------------------------------------"
 function! ToggleItem ()
-  let current_line = getline('.')
-  let l:line = getline(line(".") - 1)
+  let cline = getline(line('.'))
+  let nline = getline(line('.') + 1) 
+  let n2line = getline(line('.') + 2) 
 
-  if current_line =~ '\V* '
+  if cline =~ '* '
     echo "Item checked."
-    exe 's/\V* /× /'
+    exe 's/* /× /'
     let time = strftime("%m.%d.%Y at %I:%M %p")
     if g:checklist_use_timestamps == 1
       exe "normal a ".time." :"
     endif
     return ""
-  elseif current_line =~ '\V× '
+  elseif cline =~ '× '
     echo "Item unchecked."
     if g:checklist_use_timestamps == 1
       exe 's/\× \d\{2}\.\d\{2}\.\d\{4} at \d\{2}:\d\{2} [A|P]M :/*/i'
     elseif g:checklist_use_timestamps == 0
-      exe 's/\V× /* /i'
+      exe 's/× /* /i'
     endif
     return ""
   endif
 
-  if current_line =~ '^+ '
-    if CheckLine('.','+',1) == 'Empty'
-    elseif CheckLine('.','+',2) == 'Empty'
-    else
-      exe 's/\V+ /- /i'
+  if cline =~ '^+ ' && nline !~ '^\s*$'
+    if n2line !~ '^\s*$'
+      exe 's/+ /- /i'
       normal jzc
       normal k
     endif
     return ""
-  elseif current_line =~ '^- '
-    if CheckLine('.','+',1) == 'Empty'
-    elseif CheckLine('.','+',2) == 'Empty'
-    else
-      exe 's/\V- /+ /i'
+  elseif cline =~ '^- ' && nline !~ '^\s*$'
+    if n2line !~ '^\s*$'
+      exe 's/- /+ /i'
       normal jzo
       normal k
     endif
@@ -99,5 +93,4 @@ function! ToggleItem ()
 endfunction
 
 imap <leader>v  <C-R>=MakeItem()<CR><End>
-nmap <leader>v  :call MakeItem()<CR>i<End>
 nmap <leader>vv :call ToggleItem()<CR><End>
