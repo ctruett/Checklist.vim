@@ -26,9 +26,8 @@ function! FoldLevel(linenum)
   return level
 endfunction
 
-
 exe 'normal zR'
-exe 'g!/[^*].*/s/- /+ /g'
+exe 'g!/^  [*×]/s/- /+ /g'
 
 " Matches
 syn match checkBox /^\s*\* / skipwhite
