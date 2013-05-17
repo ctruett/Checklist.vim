@@ -21,7 +21,7 @@ function! ChecklistIndentGet(linenum)
     return 0
   elseif cline =~ '^[*×] '
     return &sw
-  elseif cline =~ '^  [*×] '
+  elseif cline =~ '^\t[*×] '
     return &sw
   else
     return 0

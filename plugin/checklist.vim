@@ -38,14 +38,14 @@ function! MakeItem ()
   endif
 
   if pline =~ '^+ '
-    exe 'normal i  * '
+    exe 'normal i\t* '
   endif
 
-  if pline =~ '^  \* '
+  if pline =~ '^\t\* '
     exe 'normal i* '
   endif
 
-  if pline =~ '^  × '
+  if pline =~ '^\t× '
     exe 'normal i* '
   endif
 
@@ -92,5 +92,5 @@ function! ToggleItem ()
   endif
 endfunction
 
-imap <leader>v  <C-R>=MakeItem()<CR><End>
-nmap <leader>vv :call ToggleItem()<CR><End>
+imap <leader>ca <C-R>=MakeItem()<CR><End>
+nmap <leader>cc :call ToggleItem()<CR><End>

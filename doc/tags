@@ -1,0 +1,5 @@
+CHANGE_LOG	checklist.txt	/*CHANGE_LOG*
+CONFIGURE	checklist.txt	/*CONFIGURE*
+INSTALL	checklist.txt	/*INSTALL*
+USAGE	checklist.txt	/*USAGE*
+checklist.txt	checklist.txt	/*checklist.txt*
