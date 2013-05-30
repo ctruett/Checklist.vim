@@ -38,14 +38,14 @@ function! MakeItem ()
   endif
 
   if pline =~ '^+ '
-    exe 'normal i\t* '
+    exe 'normal i  * '
   endif
 
-  if pline =~ '^\t\* '
+  if pline =~ '^\s*\* '
     exe 'normal i* '
   endif
 
-  if pline =~ '^\t× '
+  if pline =~ '^  × '
     exe 'normal i* '
   endif
 

@@ -16,6 +16,7 @@ endif
 setlocal foldlevel=0
 setlocal foldmethod=expr
 setlocal foldexpr=FoldLevel(v:lnum)
+set expandtab
 
 function! FoldLevel(linenum)
   let linetext = getline(a:linenum)
@@ -27,7 +28,7 @@ function! FoldLevel(linenum)
 endfunction
 
 exe 'normal zR'
-exe 'g!/^\t[*×]/s/- /+ /g'
+exe 'g!/^  [*×]/s/- /+ /g'
 
 " Matches
 syn match checkBox /^\s*\* / skipwhite
