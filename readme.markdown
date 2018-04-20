@@ -18,11 +18,11 @@ When starting to make a checklist, make sure to first set the filetype using:
 
     :set ft=chklst
 
-To create a checklist, use `<leader>v`.  
-To mark items as done use `<leader>vv` in normal mode.  
-To fold list items use `<leader>vv` on a parent (+) item in normal mode.
+To create a checklist, use `<leader>ca` in insert mode.  
+To mark items as done use `<leader>cc` in normal mode.  
+To fold list items use `<leader>cc` on a parent (+) item in normal mode.
 
-Basic use is `<leader>v` 'Name of checklist' `<CR>`, `<leader>v` for subsequent list items, `<CR>`, etc.
+Basic use is `<leader>ca` 'Name of checklist' `<CR>`, `<leader>ca` for subsequent list items, `<CR>`, etc.
 
 #### CHANGE LOG
     06.03.2011 - Changed the ascii box <81> to an asterick. (Didn't really want to though!)  
