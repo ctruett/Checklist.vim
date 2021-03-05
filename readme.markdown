@@ -1,6 +1,8 @@
 #### INSTALL
 
-Add `Plug 'ctruett/Checklist.vim'` to your .vimrc, or download and install it manually.
+Add the following to your .vimrc, or download and install it manually.
+
+    Plug 'ctruett/Checklist.vim'
 
 #### CONFIGURE
 If you want timestamps, add the following line to your .vimrc:
@@ -19,8 +21,11 @@ To fold list items use `<leader>cc` on a parent (+) item in normal mode.
 Basic use is `<leader>ca` 'Name of checklist' `<CR>`, `<leader>ca` for subsequent list items, `<CR>`, etc.
 
 #### CHANGE LOG
-    03.05.2021 - Merged a long-outstanding pull request that updated the documentation, moved ft detection into the main plugin file.
-    06.03.2011 - Changed the ascii box <81> to an asterick. (Didn't really want to though!)  
+    03.05.2021 - Merged a long-outstanding pull request that updated the
+                 documentation, moved ft detection into the main plugin file.
+                 Thanks @TNTINC!
+    06.03.2011 - Changed the ascii box <81> to an asterick. (Didn't really want
+                 to though!)  
     06.01.2011 - Added datestamp support. 
     05.28.2011 - Major Rehaul. Much faster. Added syntax file and packaged into .zip.  
     05.24.2011 - Rewrote entire plugin. Should be faster and easier.  
