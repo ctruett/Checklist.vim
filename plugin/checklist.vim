@@ -97,3 +97,4 @@ endfunction
 
 imap <leader>ca <C-R>=MakeItem()<CR><End>
 nmap <leader>cc :call ToggleItem()<CR><End>
+au BufNewFile,BufRead *.chklst setf chklst 
