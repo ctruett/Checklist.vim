@@ -1,6 +1,6 @@
 #### INSTALL
 
-Add `Plug "ctruett/Checklist.vim"` to your .vimrc, or download and install it manually.
+Add `Plug 'ctruett/Checklist.vim'` to your .vimrc, or download and install it manually.
 
 #### CONFIGURE
 If you want timestamps, add the following line to your .vimrc:
